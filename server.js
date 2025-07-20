@@ -9,8 +9,13 @@ const express = require('express');
 const cors = require('cors');
 
 const app = express();
-app.use(cors({ origin: process.env.FRONTEND_ORIGIN }));
+// app.use(cors({ origin: process.env.FRONTEND_ORIGIN, credentials: true }));
 app.use(express.json());
+
+app.get('/', (req, res) => {
+  res.send('Hello Backend!');
+});
+
 
 const uploadRouter = require('./src/routes/upload');
 app.use('/api/upload', uploadRouter);
